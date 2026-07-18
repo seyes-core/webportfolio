@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#12151c"/>
+  <defs>
+    <pattern id="grid-cloud-lab" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#232833" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#grid-cloud-lab)"/>
+  <circle cx="600" cy="337" r="6" fill="#ffb454"/>
+  <circle cx="600" cy="337" r="46" fill="none" stroke="#ffb454" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="600" cy="337" r="90" fill="none" stroke="#4fd1c5" stroke-opacity="0.25" stroke-width="1"/>
+</svg>

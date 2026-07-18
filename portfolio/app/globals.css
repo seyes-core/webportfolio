@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/* Self-hosted fonts — no runtime fetch, no layout shift from CDN latency */
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+/* ============================================================
+   DESIGN TOKENS
+   Framing: the site reads as a living systems specification.
+   Palette avoids the two AI-portfolio defaults (cream+terracotta,
+   black+acid-green) in favor of an instrument-panel navy with a
+   single warm "signal" accent and a cool "data-line" accent used
+   only for structural/graph elements.
+   ============================================================ */
+@theme {
+  /* --- Color: surfaces --- */
+  --color-base: #0a0c10; /* page background */
+  --color-surface: #12151c; /* card / panel background */
+  --color-surface-raised: #171b23; /* hovered / elevated panel */
+  --color-hairline: #232833; /* borders, dividers, grid lines */
+  --color-hairline-strong: #333a48;
+
+  /* --- Color: text --- */
+  --color-text-high: #f5f6f8; /* headings, primary text */
+  --color-text-mid: #b3bac7; /* body copy */
+  --color-text-muted: #8a93a6; /* captions, meta */
+  --color-text-faint: #5b6376; /* disabled, placeholder */
+
+  /* --- Color: signal (warm, primary accent — CTAs, focus, key data) --- */
+  --color-signal: #ffb454;
+  --color-signal-dim: #cc9143;
+  --color-signal-ink: #1a1206; /* text-on-signal */
+
+  /* --- Color: data-line (cool, secondary — graphs, node-map, links) --- */
+  --color-dataline: #4fd1c5;
+  --color-dataline-dim: #3aa89e;
+
+  /* --- Color: status --- */
+  --color-success: #6ee7a8;
+  --color-danger: #f7768e;
+
+  /* --- Typography --- */
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --text-display-xl: 5.5rem;
+  --text-display-l: 3.75rem;
+  --text-display-m: 2.75rem;
+  --text-display-s: 2rem;
+
+  /* --- Layout --- */
+  --container-content: 76rem;
+  --spacing-section: 8rem;
+  --spacing-section-sm: 5rem;
+
+  /* --- Radius (small, technical — not soft/consumer rounded) --- */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* --- Shadows --- */
+  --shadow-panel: 0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+    0 20px 40px -20px rgba(0, 0, 0, 0.6);
+  --shadow-signal-glow: 0 0 0 1px rgba(255, 180, 84, 0.25),
+    0 0 24px 0 rgba(255, 180, 84, 0.12);
+
+  /* --- Motion --- */
+  --ease-signature: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 400ms;
+  --duration-slow: 800ms;
+}
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
+@layer base {
+  * {
+    border-color: var(--color-hairline);
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: var(--color-text-mid);
+    font-family: var(--font-body);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-text-high);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  ::selection {
+    background-color: var(--color-signal);
+    color: var(--color-signal-ink);
+  }
+
+  /* Visible, high-contrast keyboard focus everywhere — never removed */
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Faint schematic grid on the page background, purely atmospheric */
+  body {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: center top;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: var(--color-signal);
+    color: var(--color-signal-ink);
+    padding: 0.75rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
