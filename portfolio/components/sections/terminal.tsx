@@ -77,12 +77,12 @@ export function Terminal() {
               </span>
             </div>
 
-            <div className="min-h-[260px] p-6 font-mono text-sm leading-relaxed">
+            <div className="min-h-[220px] overflow-x-auto p-4 font-mono text-[0.8rem] leading-relaxed sm:min-h-[260px] sm:p-6 sm:text-sm">
               {lines.slice(0, effectiveVisibleCount).map((line, i) => {
                 if (line.type === "blank") return <div key={i} className="h-3" />;
                 if (line.type === "command") {
                   return (
-                    <p key={i} className="text-(--color-text-high)">
+                    <p key={i} className="whitespace-nowrap text-(--color-text-high)">
                       <span className="text-(--color-dataline)">$</span> {line.text}
                     </p>
                   );

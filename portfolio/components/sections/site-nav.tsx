@@ -59,7 +59,7 @@ export function SiteNav() {
 
         <button
           type="button"
-          className="text-(--color-text-high) md:hidden"
+          className="-mr-2 inline-flex h-11 w-11 items-center justify-center text-(--color-text-high) md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-nav"

@@ -44,7 +44,7 @@ export function SystemMap() {
 
   return (
     <div
-      className="relative mx-auto aspect-[540/460] w-full max-w-[540px] overflow-visible"
+      className="relative mx-auto aspect-[540/460] w-full max-w-[540px]"
       role="img"
       aria-label="Diagram showing four connected engineering domains: AI Products, Cloud Infrastructure, Data Engineering, and Full-Stack Product, converging on a central node."
     >
@@ -141,17 +141,17 @@ export function SystemMap() {
         return (
           <div
             key={domain.id}
-            className="absolute w-[4.5rem] -translate-y-1/2 text-center sm:w-40"
+            className="absolute w-[5.25rem] -translate-y-1/2 text-center sm:w-40"
             style={{
               left: `${(pos.x / 540) * 100}%`,
               top: `${(pos.y / 460) * 100}%`,
               textAlign: isLeft ? "right" : "left",
               transform: isLeft
-                ? "translate(calc(-100% - 0.35rem), -50%)"
-                : "translate(0.35rem, -50%)",
+                ? "translate(calc(-100% - 0.25rem), -50%)"
+                : "translate(0.25rem, -50%)",
             }}
           >
-            <p className="font-mono text-[0.56rem] uppercase tracking-[0.1em] text-(--color-text-high) sm:text-[0.7rem]">
+            <p className="font-mono text-[0.58rem] leading-tight uppercase tracking-[0.08em] text-(--color-text-high) sm:text-[0.7rem] sm:leading-normal sm:tracking-[0.1em]">
               {domain.label}
             </p>
           </div>

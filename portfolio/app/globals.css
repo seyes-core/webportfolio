@@ -87,6 +87,7 @@
   html {
     color-scheme: dark;
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
@@ -96,6 +97,19 @@
     font-feature-settings: "cv11", "ss01";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  /* Tighter type + section rhythm on narrow viewports */
+  @media (max-width: 639px) {
+    :root {
+      --text-display-xl: 3.25rem;
+      --text-display-l: 2.5rem;
+      --text-display-m: 2rem;
+      --text-display-s: 1.625rem;
+      --spacing-section: 5rem;
+      --spacing-section-sm: 3.5rem;
+    }
   }
 
   h1,

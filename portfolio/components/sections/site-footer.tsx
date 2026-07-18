@@ -20,7 +20,7 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-12 gap-y-8 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 sm:gap-x-12">
           <FooterColumn
             title="Sitemap"
             links={siteConfig.nav.map((n) => ({ label: n.label, href: n.href }))}
@@ -36,6 +36,7 @@ export function SiteFooter() {
           <FooterColumn
             title="Contact"
             links={[{ label: siteConfig.email, href: `mailto:${siteConfig.email}` }]}
+            className="col-span-2 sm:col-span-1"
           />
         </div>
       </Container>
@@ -51,12 +52,14 @@ export function SiteFooter() {
 function FooterColumn({
   title,
   links,
+  className,
 }: {
   title: string;
   links: { label: string; href: string }[];
+  className?: string;
 }) {
   return (
-    <div>
+    <div className={className}>
       <p className="font-mono text-xs uppercase tracking-[0.12em] text-(--color-text-faint)">
         {title}
       </p>
@@ -65,7 +68,7 @@ function FooterColumn({
           <li key={link.href}>
             <Link
               href={link.href}
-              className="text-sm text-(--color-text-mid) transition-colors hover:text-(--color-signal)"
+              className="break-words text-sm text-(--color-text-mid) transition-colors hover:text-(--color-signal)"
             >
               {link.label}
             </Link>
