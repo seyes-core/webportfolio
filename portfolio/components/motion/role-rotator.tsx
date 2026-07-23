@@ -36,13 +36,13 @@ export function RoleRotator() {
 
   return (
     <div
-      className="inline-flex max-w-full flex-wrap items-baseline gap-x-1.5 gap-y-1 font-mono text-[11px] leading-snug text-(--color-text-muted) sm:gap-x-2 sm:text-sm sm:leading-normal"
+      className="inline-flex max-w-full flex-wrap items-baseline gap-x-1.5 gap-y-1 font-mono text-[11px] leading-snug text-(--color-signal-dim) sm:gap-x-2 sm:text-sm sm:leading-normal"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      <span className="text-(--color-dataline)" aria-hidden="true">
+      <span className="text-(--color-signal)" aria-hidden="true">
         $
       </span>
       <span className="shrink-0">building as a</span>
