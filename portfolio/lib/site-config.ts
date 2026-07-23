@@ -8,8 +8,8 @@ export const siteConfig = {
   email: "hello@seye.dev",
   location: "Lagos, Nigeria — working async, open to remote & relocation",
   social: {
-    github: "https://github.com/seye",
-    linkedin: "https://linkedin.com/in/seye",
+    github: "https://github.com/Bambillion",
+    linkedin: "https://linkedin.com/in/seye-o-gungbuji",
     x: "https://x.com/seye",
   },
   nav: [
