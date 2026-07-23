@@ -158,7 +158,85 @@
   }
 }
 
+/* ============================================================
+   RESPONSIVE LAYOUT SYSTEM
+   -----------------------------------------------------------------------
+   Breakpoint contract (Tailwind defaults — named here so every component
+   references the same three steps instead of inventing new ones):
+     sm   640px   phone -> tablet: nav collapses to hamburger below this,
+                  container padding steps up, filter bars stop wrapping
+                  vertically.
+     md   768px   tablet -> small desktop: grids go 1-col -> 2/3-col,
+                  section padding steps up to --spacing-section.
+     lg  1024px   desktop: hero goes to 2-column, container padding takes
+                  its final step, max-width content layouts settle.
+
+   Adapted from hivesecurity.gitlab.io/cheatsheet's dense-reference layout:
+   their sticky filter sidebar collapses into a horizontally wrapping/
+   scrollable chip row below 900px rather than disappearing or stacking
+   vertically. The utilities below generalize that "collapse to a
+   horizontal strip, don't stack" pattern plus their full-bleed-on-mobile
+   treatment for content that shouldn't lose width to page padding on
+   small screens (dense code/sequence blocks).
+   ============================================================ */
 @layer utilities {
+  /* Bleeds a block edge-to-edge on phones by canceling the parent
+     Container's inline padding, then restores it at sm+. Use for dense,
+     horizontally-scrolling content (code, tag sequences) that benefits
+     from every pixel of width on the smallest screens. */
+  .full-bleed-sm {
+    margin-inline: -1rem;
+  }
+  @media (min-width: 640px) {
+    .full-bleed-sm {
+      margin-inline: 0;
+    }
+  }
+
+  /* Scrollable row with no visible scrollbar — for horizontally-scrolling
+     chip/sequence rows on touch devices (mirrors hivesecurity's
+     `.cs-install-wrap { overflow-x: auto; scrollbar-width: none }`). */
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Filter/toggle chip — shared base for any category or status filter
+     bar. Collapses naturally into a horizontal strip since it's an
+     inline-flex item, matching the mobile treatment of a sticky sidebar
+     nav that becomes a row of pills instead of stacking. */
+  .filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    white-space: nowrap;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-hairline-strong);
+    padding: 0.375rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    background: transparent;
+    transition:
+      border-color var(--duration-fast),
+      color var(--duration-fast),
+      background-color var(--duration-fast);
+  }
+  .filter-chip:hover {
+    border-color: var(--color-signal);
+    color: var(--color-signal);
+  }
+  .filter-chip[data-active="true"] {
+    border-color: var(--color-signal);
+    background: color-mix(in srgb, var(--color-signal) 12%, transparent);
+    color: var(--color-signal);
+  }
+
   .skip-link {
     position: absolute;
     left: -9999px;

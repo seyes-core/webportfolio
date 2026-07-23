@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/motion/reveal";
-import { StaggerList, StaggerItem } from "@/components/motion/stagger-list";
-import { ProjectCard } from "@/components/sections/project-card";
+import { WorkFilterGrid } from "@/components/sections/work-filter-grid";
 import { CTA } from "@/components/sections/cta";
 import { projects } from "@/content/projects";
 
@@ -30,13 +29,7 @@ export default function WorkPage() {
             </p>
           </Reveal>
 
-          <StaggerList className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-2">
-            {projects.map((project) => (
-              <StaggerItem key={project.slug}>
-                <ProjectCard project={project} />
-              </StaggerItem>
-            ))}
-          </StaggerList>
+          <WorkFilterGrid projects={projects} />
         </Container>
       </section>
       <CTA />

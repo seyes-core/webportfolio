@@ -133,10 +133,13 @@ export default async function ProjectPage({
                 <p className="max-w-2xl text-balance text-base leading-relaxed text-(--color-text-mid) md:text-lg">
                   {project.approach}
                 </p>
-                <StaggerList className="mt-8 flex flex-wrap items-center gap-2">
+                {/* Edge-to-edge scroll on phones so the pipeline reads as one
+                    continuous sequence instead of wrapping mid-arrow; settles
+                    into a wrapping row once there's room at sm+. */}
+                <StaggerList className="hide-scrollbar full-bleed-sm mt-8 flex items-center gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
                   {project.architecture.map((layer, i) => (
-                    <StaggerItem key={layer} className="flex items-center gap-2">
-                      <span className="rounded-[var(--radius-sm)] border border-(--color-dataline)/40 bg-(--color-dataline)/[0.06] px-4 py-2.5 font-mono text-sm text-(--color-text-high)">
+                    <StaggerItem key={layer} className="flex shrink-0 items-center gap-2">
+                      <span className="whitespace-nowrap rounded-[var(--radius-sm)] border border-(--color-dataline)/40 bg-(--color-dataline)/[0.06] px-4 py-2.5 font-mono text-sm text-(--color-text-high)">
                         {layer}
                       </span>
                       {i < project.architecture.length - 1 && (
