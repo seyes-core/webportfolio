@@ -1,20 +1,20 @@
 export const siteConfig = {
   name: "Seye",
-  fullName: "Seye Ade",
+  fullName: "Seye Ogungbuji",
   role: "Software Engineer — Systems, Cloud & AI Products",
   shortBio:
     "I design scalable systems, AI-powered products, and modern web experiences that turn complex ideas into tools people actually use.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://seye.dev",
-  email: "hello@seye.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://seye-o.dev",
+  email: "hello@seye-o.dev",
   location: "Lagos, Nigeria — working async, open to remote & relocation",
   social: {
     github: "https://github.com/Bambillion",
     linkedin: "https://linkedin.com/in/seye-o-gungbuji",
-    x: "https://x.com/seye",
+    x: "https://x.com/",
   },
   nav: [
     { id: "00", label: "Index", href: "/" },
-    { id: "01", label: "System", href: "/about" },
+    { id: "01", label: "About", href: "/about" },
     { id: "02", label: "Work", href: "/work" },
     { id: "03", label: "Log", href: "/writing" },
     { id: "04", label: "Contact", href: "/contact" },
