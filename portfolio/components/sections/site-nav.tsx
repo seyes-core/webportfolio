@@ -21,7 +21,7 @@ export function SiteNav() {
           className="font-mono text-sm font-medium tracking-tight text-(--color-text-high)"
           onClick={() => setOpen(false)}
         >
-          seye<span className="text-(--color-signal)">.</span>dev
+          seye-o<span className="text-(--color-signal)">.</span>dev
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">

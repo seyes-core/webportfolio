@@ -66,7 +66,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE_SIGNATURE, delay: 0.5 }}
-            className="mt-5 max-w-lg text-pretty text-base text-(--color-signal) sm:mt-6 sm:text-lg"
+            className="mt-5 max-w-lg text-pretty text-base text-(--color-text-muted) sm:mt-6 sm:text-lg"
           >
             {siteConfig.shortBio}
           </motion.p>
